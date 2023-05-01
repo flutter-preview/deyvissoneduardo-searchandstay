@@ -43,7 +43,7 @@ class FormLogin extends GetView<AccountController> {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () => Get.offAllNamed(AppRoutes.HOMEPAGE),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: controller.isLoading.isFalse
@@ -61,6 +61,14 @@ class FormLogin extends GetView<AccountController> {
           }),
           Center(
             child: TextButton(
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.all<Color>(kPrimaryColor),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              ),
               onPressed: () => Get.toNamed(AppRoutes.REGISTERPAGE),
               child: Text('Primeiro acesso?',
                   style: Theme.of(context).textTheme.titleMedium!),
