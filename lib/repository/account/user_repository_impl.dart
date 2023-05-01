@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:searchandstay/repository/user_repository.dart';
+import 'package:searchandstay/repository/account/user_repository.dart';
 import 'package:searchandstay/routes/app_routes.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

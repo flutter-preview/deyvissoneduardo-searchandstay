@@ -7,8 +7,11 @@ import 'package:searchandstay/routes/app_routes.dart';
 import 'package:searchandstay/theme/theme_default.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'modules/core/helpers/environments.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Environments.loadEnvs();
 
   await Supabase.initialize(
     url: 'https://specyzczfoxicwhxxcdu.supabase.co',

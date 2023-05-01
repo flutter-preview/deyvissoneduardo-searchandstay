@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:searchandstay/service/user_service.dart';
+import 'package:searchandstay/service/account/user_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AccountController extends GetxController {

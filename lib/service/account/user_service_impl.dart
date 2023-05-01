@@ -1,6 +1,7 @@
-import 'package:searchandstay/repository/user_repository.dart';
-import 'package:searchandstay/service/user_service.dart';
+import 'package:searchandstay/repository/account/user_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+import 'user_service.dart';
 
 class UserServiceImpl implements UserService {
   final UserRepository _userRepository;

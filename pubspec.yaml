@@ -17,6 +17,9 @@ dependencies:
   google_fonts: 4.0.4
   device_preview: 1.1.0
   supabase_flutter: 1.8.1
+  logger: 1.3.0
+  flutter_dotenv: 5.0.2
+  dio: 5.1.1
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +30,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - .env
   #   - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
