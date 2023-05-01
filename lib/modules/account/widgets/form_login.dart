@@ -43,7 +43,7 @@ class FormLogin extends GetView<AccountController> {
                     ),
                   ),
                 ),
-                onPressed: () => Get.offAllNamed(AppRoutes.HOMEPAGE),
+                onPressed: () => controller.login(),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: controller.isLoading.isFalse
