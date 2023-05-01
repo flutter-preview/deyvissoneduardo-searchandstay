@@ -48,7 +48,7 @@ class FormRegiter extends GetView<AccountController> {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () => controller.register(),
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: controller.isLoading.isFalse
@@ -57,8 +57,8 @@ class FormRegiter extends GetView<AccountController> {
                           style: Theme.of(context).textTheme.labelLarge,
                         )
                       : const CircularProgressIndicator(
-                          backgroundColor: kPrimaryColor,
-                          color: kSecondaryColor,
+                          backgroundColor: kSecondaryColor,
+                          color: kbackgroundColor,
                         ),
                 ),
               ),
