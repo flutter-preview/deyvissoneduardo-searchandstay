@@ -46,3 +46,19 @@ class HomePage extends GetView<HomeController> {
     );
   }
 }
+
+class FlowMenuDelegate extends FlowDelegate {
+  @override
+  void paintChildren(FlowPaintingContext context) {
+    double x = 0;
+    double y = 150;
+    for (int i = 0; i < context.childCount; i++) {
+      double w = 150;
+      context.paintChild(i, transform: Matrix4.translationValues(x, y, 0));
+      x += w + 20; // espaçamento entre os widgets
+    }
+  }
+
+  @override
+  bool shouldRepaint(FlowMenuDelegate oldDelegate) => false;
+}
