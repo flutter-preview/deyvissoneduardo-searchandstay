@@ -50,7 +50,7 @@ class TextFormFieldWidget extends StatelessWidget {
           const SizedBox(height: 5),
           TextFormField(
             controller: controller,
-            cursorColor: kPrimaryColor,
+            cursorColor: kSecondaryColor,
             inputFormatters: inputFormatters,
             keyboardType: keyboardType,
             obscureText: obscureText ?? false,
@@ -58,37 +58,37 @@ class TextFormFieldWidget extends StatelessWidget {
             validator: validator,
             autofocus: autofocus ?? false,
             decoration: InputDecoration(
-              isDense: isDense,
-              filled: true,
-              fillColor: fillColor ?? Colors.white,
-              contentPadding:
-                  const EdgeInsets.only(left: 25.0, bottom: 5.0, top: 5.0),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                gapPadding: 0,
-                borderSide: const BorderSide(
-                  color: kSecondaryLightColor,
+                isDense: isDense,
+                filled: true,
+                fillColor: fillColor ?? Colors.white,
+                contentPadding:
+                    const EdgeInsets.only(left: 25.0, bottom: 5.0, top: 5.0),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  gapPadding: 0,
+                  borderSide: const BorderSide(
+                    color: kSecondaryLightColor,
+                  ),
                 ),
-              ),
-              hintText: hint,
-              hintStyle: hintStyle ??
-                  const TextStyle(
-                    fontSize: 20,
+                hintText: hint,
+                hintStyle: hintStyle ??
+                    const TextStyle(
+                      fontSize: 20,
+                      color: kSecondaryColor,
+                    ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  gapPadding: 0,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  gapPadding: 0,
+                  borderSide: const BorderSide(
                     color: kSecondaryColor,
                   ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                gapPadding: 0,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                gapPadding: 0,
-                borderSide: const BorderSide(
-                  color: kSecondaryColor,
                 ),
-              ),
-              suffixIcon: suffixIcon,
-            ),
+                suffixIcon: suffixIcon,
+                suffixIconColor: kSecondaryColor),
           ),
         ],
       ),

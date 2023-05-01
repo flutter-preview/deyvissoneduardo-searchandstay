@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:searchandstay/modules/core/widgets/text_form_field_widget.dart';
-import 'package:searchandstay/routes/app_routes.dart';
 import 'package:searchandstay/theme/colors.dart';
 
+import '../../core/widgets/text_form_field_widget.dart';
 import '../account_controller.dart';
 
-class FormLogin extends GetView<AccountController> {
-  const FormLogin({Key? key}) : super(key: key);
+class FormRegiter extends GetView<AccountController> {
+  const FormRegiter({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: controller.formKeyLogin,
+      key: controller.formKeyRegister,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          TextFormFieldWidget(
+            hint: 'Nome',
+            autofocus: true,
+            controller: controller.controllerName,
+            suffixIcon: const Icon(Icons.person),
+          ),
           TextFormFieldWidget(
             hint: 'E-mail',
             autofocus: true,
@@ -48,8 +53,8 @@ class FormLogin extends GetView<AccountController> {
                   padding: const EdgeInsets.all(12.0),
                   child: controller.isLoading.isFalse
                       ? Text(
-                          'ENTRAR',
-                          style: Theme.of(context).textTheme.titleMedium,
+                          'SALVAR',
+                          style: Theme.of(context).textTheme.labelLarge,
                         )
                       : const CircularProgressIndicator(
                           backgroundColor: kPrimaryColor,
@@ -59,13 +64,6 @@ class FormLogin extends GetView<AccountController> {
               ),
             );
           }),
-          Center(
-            child: TextButton(
-              onPressed: () => Get.toNamed(AppRoutes.REGISTERPAGE),
-              child: Text('Primeiro acesso?',
-                  style: Theme.of(context).textTheme.titleMedium!),
-            ),
-          ),
         ],
       ),
     );

@@ -42,9 +42,9 @@ TextTheme textTheme() {
 
 AppBarTheme appBarTheme() {
   return const AppBarTheme(
-    color: Colors.white,
-    elevation: 0,
-    iconTheme: IconThemeData(color: Colors.black),
-    centerTitle: true,
-  );
+      color: kPrimaryColor,
+      elevation: 0,
+      iconTheme: IconThemeData(color: Colors.black),
+      centerTitle: true,
+      titleTextStyle: TextStyle(color: kSecondaryColor, fontSize: 20.0));
 }
