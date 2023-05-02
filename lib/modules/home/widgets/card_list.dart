@@ -15,19 +15,9 @@ class CardList extends GetView<HomeController> {
       child: Material(
         child: ListTile(
           title: Text(title ?? ''),
+          subtitle: const Text('Clique para ver detalhes, ou arraste para os lados para atualizar ou excluir.'),
           tileColor: kbackgroundColor,
-          trailing: IconButton(
-            onPressed: () => AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeOut,
-              height: 200,
-              child: Flow(
-                delegate: FlowMenuDelegate(),
-                children: controller.menuItems,
-              ),
-            ),
-            icon: const Icon(Icons.menu),
-          ),
+          trailing: const Icon(Icons.delete, color: Colors.red,),
           onTap: () {
             Navigator.push(
               context,
