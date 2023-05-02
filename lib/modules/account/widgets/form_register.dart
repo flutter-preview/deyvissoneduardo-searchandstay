@@ -23,14 +23,6 @@ class FormRegiter extends GetView<AccountController> {
             suffixIcon: const Icon(Icons.person),
           ),
           TextFormFieldWidget(
-            hint: 'CPF',
-            autofocus: true,
-            keyboardType: TextInputType.number,
-            controller: controller.controllerName,
-            suffixIcon: const Icon(Icons.person_2),
-            validator: Validatorless.cpf('cpf invalido.'),
-          ),
-          TextFormFieldWidget(
             hint: 'E-mail',
             autofocus: true,
             keyboardType: TextInputType.emailAddress,

@@ -7,7 +7,6 @@ class AccountController extends GetxController {
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
   TextEditingController controllerName = TextEditingController();
-  TextEditingController controllerCPF = TextEditingController();
 
   final GlobalKey<FormState> formKeyLogin = GlobalKey();
   final GlobalKey<FormState> formKeyRegister = GlobalKey();
@@ -36,7 +35,6 @@ class AccountController extends GetxController {
       controllerName.text.trim(),
       controllerEmail.text.trim(),
       controllerPassword.text.trim(),
-      controllerCPF.text.trim(),
     );
     isLoading.value = false;
     return user;

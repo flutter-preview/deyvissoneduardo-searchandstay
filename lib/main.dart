@@ -23,6 +23,7 @@ Future<void> main() async {
     DevicePreview(
       enabled: false,
       builder: (context) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: theme(),
         showPerformanceOverlay: false,
         initialBinding: CoreBindings(),

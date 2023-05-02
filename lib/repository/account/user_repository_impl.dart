@@ -28,12 +28,12 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<User?> register(
-      String name, String cpf, String email, String password) async {
+      String name, String email, String password) async {
     try {
       final AuthResponse res = await supabase.auth.signUp(
         email: email,
         password: password,
-        data: {'username': name, 'cpf': cpf},
+        data: {'username': name,},
       );
       final User? user = res.user;
       return user;
