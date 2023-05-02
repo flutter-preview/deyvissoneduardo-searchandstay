@@ -30,4 +30,28 @@ class HomeRepositoryImpl implements HomeRepository {
     debugPrint('${result.statusCode}');
     debugPrint('${result.statusMessage}');
   }
+
+  @override
+  Future<void> deleteItem(int id) async {
+    debugPrint('$id');
+    final result = await _restClient.delete('/house_rules/$id');
+    debugPrint('${result.statusCode}');
+    debugPrint('${result.statusMessage}');
+  }
+
+  @override
+  Future<void> updateItem(int id, String name) async {
+    final result = await _restClient.put(
+      '/house_rules/$id',
+      data: {
+        "house_rules": {
+          "name": name,
+          "active": 0,
+        }
+      },
+    );
+    debugPrint('${result.statusCode}');
+    debugPrint('${result.statusMessage}');
+    return result.data;
+  }
 }

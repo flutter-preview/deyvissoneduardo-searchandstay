@@ -14,4 +14,10 @@ class HomeServiceImpl implements HomeService {
   @override
   Future<void> createHouseRule(String name) =>
       _homeRepository.createHouseRule(name);
+
+  @override
+  Future<void> deleteItem(int id) => _homeRepository.deleteItem(id);
+  
+  @override
+  Future<void> updateItem(int id, String name) => _homeRepository.updateItem(id, name);
 }

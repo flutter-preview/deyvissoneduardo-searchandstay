@@ -44,9 +44,7 @@ class DioRestClient implements RestClient {
         path,
         data: data,
         queryParameters: queryParameters,
-        options: Options(
-          headers: headers,
-        ),
+        options: Options(headers: headers),
       );
       return RestClientResponse(
         data: response.data,
@@ -71,9 +69,7 @@ class DioRestClient implements RestClient {
       final response = await _dio.get<T>(
         path,
         queryParameters: queryParameters,
-        options: Options(
-          headers: headers,
-        ),
+        options: Options(headers: headers),
       );
       return RestClientResponse(
         data: response.data,
@@ -100,9 +96,7 @@ class DioRestClient implements RestClient {
         path,
         data: data,
         queryParameters: queryParameters,
-        options: Options(
-          headers: headers,
-        ),
+        options: Options(headers: headers),
       );
       return RestClientResponse(
         data: response.data,
@@ -129,9 +123,7 @@ class DioRestClient implements RestClient {
         path,
         data: data,
         queryParameters: queryParameters,
-        options: Options(
-          headers: headers,
-        ),
+        options: Options(headers: headers),
       );
       return RestClientResponse(
         data: response.data,
@@ -158,9 +150,7 @@ class DioRestClient implements RestClient {
         path,
         data: data,
         queryParameters: queryParameters,
-        options: Options(
-          headers: headers,
-        ),
+        options: Options(headers: headers),
       );
       return RestClientResponse(
         data: response.data,
@@ -188,9 +178,7 @@ class DioRestClient implements RestClient {
         path,
         data: data,
         queryParameters: queryParameters,
-        options: Options(
-          headers: headers,
-        ),
+        options: Options(headers: headers),
       );
       return RestClientResponse(
         data: response.data,

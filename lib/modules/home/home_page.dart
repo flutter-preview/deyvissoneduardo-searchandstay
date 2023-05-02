@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:searchandstay/modules/core/widgets/text_form_field_widget.dart';
 import 'package:searchandstay/modules/home/widgets/add_item.dart';
 import 'package:searchandstay/modules/home/widgets/card_list.dart';
 import 'package:searchandstay/theme/colors.dart';
@@ -24,15 +25,49 @@ class HomePage extends GetView<HomeController> {
             onDismissed: (DismissDirection direction) {
               switch (direction) {
                 case DismissDirection.endToStart:
-                  print('deletar');
+                  Get.defaultDialog(
+                    title: 'Excluir',
+                    content: Text(
+                        'Confirma a exlusão do ${controller.itemList[index]}?'),
+                    backgroundColor: kbackgroundColor,
+                    confirmTextColor: kPrimaryColor,
+                    buttonColor: Colors.white,
+                    cancelTextColor: Colors.red,
+                    textConfirm:
+                        controller.isLoading.isFalse ? 'Confirmar' : 'Salvando',
+                    textCancel: 'Cancelar',
+                    onCancel: () {
+                      Get.back();
+                    },
+                    onConfirm: () => controller.deleteHouseRule(994),
+                  );
                   break;
                 case DismissDirection.startToEnd:
-                  print('atualizar');
+                  Get.defaultDialog(
+                    title: 'Atualizar',
+                    content: TextFormFieldWidget(
+                      controller: controller.controllerName,
+                      label: '${controller.itemList[index]}',
+                    ),
+                    backgroundColor: kbackgroundColor,
+                    confirmTextColor: kPrimaryColor,
+                    buttonColor: Colors.white,
+                    cancelTextColor: Colors.red,
+                    textConfirm:
+                        controller.isLoading.isFalse ? 'Confirmar' : 'Salvando',
+                    textCancel: 'Cancelar',
+                    onCancel: () {
+                      Get.back();
+                    },
+                    onConfirm: () => controller.updateHouseRule(994),
+                  );
                   break;
                 default:
               }
             },
-            child: CardList(title: '${controller.itemList[index]}'),
+            child: Obx(() {
+              return CardList(title: '${controller.itemList[index]}');
+            }),
           ),
         ),
       ),

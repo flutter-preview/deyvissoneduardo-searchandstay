@@ -35,10 +35,8 @@ class HomeController extends GetxController
 
   Future<void> getAll() async {
     final response = await _homeService.getAll();
-    debugPrint('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     debugPrint('${response.itens}');
-    // itemList?.value = response.itens;
-    itemList?.addAll(response.itens);
+    itemList.addAll(response.itens);
   }
 
   Future<void> createHouseRule() async {
@@ -48,6 +46,23 @@ class HomeController extends GetxController
     getAll();
     Get.back();
     isLoading.value = false;
+  }
+
+  Future<void> deleteHouseRule(int id) async {
+    isLoading.value = true;
+    await _homeService.deleteItem(id);
+    getAll();
+    Get.back();
+    isLoading.value = false;
+  }
+
+    Future<void> updateHouseRule(int id) async {
+    isLoading.value = true;
+    await _homeService.updateItem(id, controllerName.text.trim());
+    isLoading.value = false;
+    controllerName.clear();
+    getAll();
+    Get.back();
   }
 
   void updateMenu(IconData icon) {

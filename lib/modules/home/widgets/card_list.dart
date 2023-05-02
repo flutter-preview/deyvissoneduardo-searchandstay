@@ -11,7 +11,7 @@ class CardList extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: 'ListTile-Hero',
+      tag: 'ListTile',
       child: Material(
         child: ListTile(
           title: Text(title ?? ''),
@@ -26,7 +26,7 @@ class CardList extends GetView<HomeController> {
                   appBar: AppBar(title: Text(title ?? '')),
                   body: Center(
                     child: Hero(
-                      tag: 'ListTile-Hero',
+                      tag: 'details-hero',
                       child: Material(
                         child: ListTile(
                           title: Text(title ?? ''),
