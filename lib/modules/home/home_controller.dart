@@ -13,7 +13,7 @@ class HomeController extends GetxController
     Icon(Icons.delete),
   ];
 
-  RxList<Item>? itemList = <Item>[].obs;
+  final itemList = RxList(<Item>[]);
   Rx<bool> isLoading = false.obs;
 
   TextEditingController controllerName = TextEditingController();
@@ -37,7 +37,8 @@ class HomeController extends GetxController
     final response = await _homeService.getAll();
     debugPrint('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     debugPrint('${response.itens}');
-    itemList?.value = response.itens;
+    // itemList?.value = response.itens;
+    itemList?.addAll(response.itens);
   }
 
   Future<void> createHouseRule() async {

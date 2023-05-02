@@ -9,8 +9,6 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@s');
-    debugPrint('${controller.itemList}');
     return Scaffold(
       appBar: AppBar(
         title: const Text('HomePage'),
@@ -19,10 +17,9 @@ class HomePage extends GetView<HomeController> {
       body: ListView.builder(
         itemCount: controller.itemList?.length,
         itemBuilder: (context, index) => Card(
-          child: CardList(
-            title: 'controller.itemList $index',
-          ),
-        ),
+            child: CardList(
+          title: '${controller.itemList[index]}',
+        )),
       ),
     );
   }

@@ -53,6 +53,10 @@ class Item {
 
   @override
   String toString() {
-    return 'Item(id: $id, name: $name, active: $active, order: $order)';
+    return name;
+  }
+
+  String toName(){
+    return name;
   }
 }
