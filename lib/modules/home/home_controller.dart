@@ -14,6 +14,7 @@ class HomeController extends GetxController
   ];
 
   RxList<Item>? itemList = <Item>[].obs;
+  Rx<bool> isLoading = false.obs;
 
   TextEditingController controllerName = TextEditingController();
 
@@ -40,10 +41,12 @@ class HomeController extends GetxController
   }
 
   Future<void> createHouseRule() async {
+    isLoading.value = true;
     await _homeService.createHouseRule(controllerName.text.trim());
     controllerName.clear();
     getAll();
     Get.back();
+    isLoading.value = false;
   }
 
   void updateMenu(IconData icon) {

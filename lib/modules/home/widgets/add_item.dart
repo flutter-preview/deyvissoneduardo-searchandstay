@@ -19,7 +19,7 @@ class AddItem extends GetView<HomeController> {
           confirmTextColor: kPrimaryColor,
           buttonColor: Colors.white,
           cancelTextColor: Colors.red,
-          textConfirm: 'Confirmar',
+          textConfirm: controller.isLoading.isFalse ? 'Confirmar' : 'Salvando',
           textCancel: 'Cancelar',
           onCancel: () {
             controller.controllerName.clear();
