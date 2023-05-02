@@ -10,4 +10,8 @@ class HomeServiceImpl implements HomeService {
 
   @override
   Future<Entities> getAll() => _homeRepository.getAll();
+
+  @override
+  Future<void> createHouseRule(String name) =>
+      _homeRepository.createHouseRule(name);
 }

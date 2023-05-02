@@ -7,8 +7,6 @@ class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
   final HomeService _homeService;
 
-  late AnimationController menuAnimation;
-
   Rx<IconData> lastTapped = Icons.add.obs;
   List<Widget> menuItems = const [
     Icon(Icons.edit),
@@ -17,17 +15,21 @@ class HomeController extends GetxController
 
   RxList<Item>? itemList = <Item>[].obs;
 
+  TextEditingController controllerName = TextEditingController();
+
   HomeController({required HomeService homeService})
       : _homeService = homeService;
 
   @override
   void onInit() {
     super.onInit();
-    menuAnimation = AnimationController(
-      duration: const Duration(milliseconds: 250),
-      vsync: this,
-    );
     getAll();
+  }
+
+  @override
+  void dispose() {
+    controllerName.dispose();
+    super.dispose();
   }
 
   Future<void> getAll() async {
@@ -35,6 +37,13 @@ class HomeController extends GetxController
     debugPrint('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     debugPrint('${response.itens}');
     itemList?.value = response.itens;
+  }
+
+  Future<void> createHouseRule() async {
+    await _homeService.createHouseRule(controllerName.text.trim());
+    controllerName.clear();
+    getAll();
+    Get.back();
   }
 
   void updateMenu(IconData icon) {
