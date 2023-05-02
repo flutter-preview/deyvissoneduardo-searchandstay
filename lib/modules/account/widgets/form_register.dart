@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:searchandstay/theme/colors.dart';
+import 'package:validatorless/validatorless.dart';
 
 import '../../core/widgets/text_form_field_widget.dart';
 import '../account_controller.dart';
@@ -22,18 +23,35 @@ class FormRegiter extends GetView<AccountController> {
             suffixIcon: const Icon(Icons.person),
           ),
           TextFormFieldWidget(
-            hint: 'E-mail',
+            hint: 'CPF',
             autofocus: true,
-            controller: controller.controllerEmail,
-            suffixIcon: const Icon(Icons.email_outlined),
+            keyboardType: TextInputType.number,
+            controller: controller.controllerName,
+            suffixIcon: const Icon(Icons.person_2),
+            validator: Validatorless.cpf('cpf invalido.'),
           ),
           TextFormFieldWidget(
-            hint: 'Senha',
-            controller: controller.controllerPassword,
-            suffixIcon: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.remove_red_eye_outlined)),
+            hint: 'E-mail',
+            autofocus: true,
+            keyboardType: TextInputType.emailAddress,
+            controller: controller.controllerEmail,
+            suffixIcon: const Icon(Icons.email_outlined),
+            validator: Validatorless.email('e-mail invalido'),
           ),
+          Obx(() {
+            return TextFormFieldWidget(
+              hint: 'Senha',
+              controller: controller.controllerPassword,
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: controller.isVisible.isTrue ? true : false,
+              suffixIcon: IconButton(
+                  onPressed: () => controller.isVisible.toggle(),
+                  icon: Icon(controller.isVisible.isTrue
+                      ? Icons.remove_red_eye_outlined
+                      : Icons.remove_red_eye)),
+              validator: Validatorless.min(6, 'minimo de 6 caracteres'),
+            );
+          }),
           Obx(() {
             return SizedBox(
               width: double.infinity,

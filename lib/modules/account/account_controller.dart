@@ -4,15 +4,16 @@ import 'package:searchandstay/service/account/user_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AccountController extends GetxController {
-  TextEditingController controllerEmail =
-      TextEditingController(text: 'deyvissonarouche@gmail.com ');
-  TextEditingController controllerPassword =
-      TextEditingController(text: '123qwe');
-  TextEditingController controllerName =
-      TextEditingController(text: 'Deyvisson');
+  TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
+  TextEditingController controllerName = TextEditingController();
+  TextEditingController controllerCPF = TextEditingController();
+
   final GlobalKey<FormState> formKeyLogin = GlobalKey();
   final GlobalKey<FormState> formKeyRegister = GlobalKey();
+
   Rx<bool> isLoading = false.obs;
+  Rx<bool> isVisible = false.obs;
 
   final UserService _userService;
 
@@ -35,9 +36,9 @@ class AccountController extends GetxController {
       controllerName.text.trim(),
       controllerEmail.text.trim(),
       controllerPassword.text.trim(),
+      controllerCPF.text.trim(),
     );
     isLoading.value = false;
-    debugPrint('user => $user');
     return user;
   }
 
