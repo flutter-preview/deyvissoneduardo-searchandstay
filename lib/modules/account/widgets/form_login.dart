@@ -30,12 +30,12 @@ class FormLogin extends GetView<AccountController> {
               hint: 'Senha',
               controller: controller.controllerPassword,
               keyboardType: TextInputType.visiblePassword,
-              obscureText: controller.isVisible.isTrue ? true : false,
+              obscureText: controller.isVisible.isFalse ? true : false,
               suffixIcon: IconButton(
                   onPressed: () => controller.isVisible.toggle(),
                   icon: Icon(controller.isVisible.isTrue
-                      ? Icons.remove_red_eye_outlined
-                      : Icons.remove_red_eye)),
+                      ? Icons.remove_red_eye
+                      : Icons.remove_red_eye_outlined)),
               validator: Validatorless.min(6, 'minimo de 6 caracteres'),
             );
           }),

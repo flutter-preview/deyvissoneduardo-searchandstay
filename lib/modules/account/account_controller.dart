@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:searchandstay/service/account/user_service.dart';
+import 'package:searchandstay/theme/colors.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AccountController extends GetxController {
@@ -36,6 +37,13 @@ class AccountController extends GetxController {
       controllerEmail.text.trim(),
       controllerPassword.text.trim(),
     );
+    Get.defaultDialog(
+      title: 'E-mail enviado.',
+      content: const Text('Confirme o e-mail para ter acesso ao app'),
+      backgroundColor: kbackgroundColor,
+      confirmTextColor: kPrimaryColor,
+    );
+    Get.back();
     isLoading.value = false;
     return user;
   }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:searchandstay/repository/account/user_repository.dart';
 import 'package:searchandstay/routes/app_routes.dart';
+import 'package:searchandstay/theme/colors.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -27,19 +28,19 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<User?> register(
-      String name, String email, String password) async {
+  Future<User?> register(String name, String email, String password) async {
     try {
       final AuthResponse res = await supabase.auth.signUp(
         email: email,
         password: password,
-        data: {'username': name,},
+        data: {
+          'username': name,
+        },
       );
       final User? user = res.user;
       return user;
     } on AuthException catch (e) {
       if (e.statusCode == '429') {
-        debugPrint('confirme e-mail');
         throw Exception();
       }
     }

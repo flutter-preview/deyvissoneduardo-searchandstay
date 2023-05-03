@@ -35,7 +35,7 @@ class FormRegiter extends GetView<AccountController> {
               hint: 'Senha',
               controller: controller.controllerPassword,
               keyboardType: TextInputType.visiblePassword,
-              obscureText: controller.isVisible.isTrue ? true : false,
+              obscureText: controller.isVisible.isFalse ? true : false,
               suffixIcon: IconButton(
                   onPressed: () => controller.isVisible.toggle(),
                   icon: Icon(controller.isVisible.isTrue
@@ -63,7 +63,7 @@ class FormRegiter extends GetView<AccountController> {
                   padding: const EdgeInsets.all(12.0),
                   child: controller.isLoading.isFalse
                       ? Text(
-                          'SALVAR',
+                          'Cadastrar',
                           style: Theme.of(context).textTheme.labelLarge,
                         )
                       : const CircularProgressIndicator(
