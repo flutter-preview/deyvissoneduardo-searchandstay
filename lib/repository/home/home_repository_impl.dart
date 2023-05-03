@@ -33,7 +33,6 @@ class HomeRepositoryImpl implements HomeRepository {
 
   @override
   Future<void> deleteItem(int id) async {
-    debugPrint('$id');
     final result = await _restClient.delete('/house_rules/$id');
     debugPrint('${result.statusCode}');
     debugPrint('${result.statusMessage}');

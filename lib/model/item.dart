@@ -53,7 +53,7 @@ class Item {
 
   @override
   String toString() {
-    return name;
+    return '$name $id';
   }
 
   String toName(){

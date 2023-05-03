@@ -8,13 +8,10 @@ class HomeController extends GetxController
   final HomeService _homeService;
 
   Rx<IconData> lastTapped = Icons.add.obs;
-  List<Widget> menuItems = const [
-    Icon(Icons.edit),
-    Icon(Icons.delete),
-  ];
 
   final itemList = RxList(<Item>[]);
   Rx<bool> isLoading = false.obs;
+  Rx<bool> shouldPop = true.obs;
 
   TextEditingController controllerName = TextEditingController();
 
