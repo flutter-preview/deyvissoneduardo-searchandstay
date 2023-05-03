@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:searchandstay/model/item.dart';
+import 'package:searchandstay/routes/app_routes.dart';
 import 'package:searchandstay/service/account/user_service.dart';
 import 'package:searchandstay/service/home/home_service.dart';
 
@@ -68,6 +69,7 @@ class HomeController extends GetxController
 
   Future<void> signOut() async {
     await _userService.signOut();
+    Get.toNamed(AppRoutes.ACCOUNTPAGE);
   }
 
   void updateMenu(IconData icon) {

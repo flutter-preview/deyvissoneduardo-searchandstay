@@ -21,6 +21,10 @@ class FormRegiter extends GetView<AccountController> {
             autofocus: true,
             controller: controller.controllerName,
             suffixIcon: const Icon(Icons.person),
+            validator: Validatorless.multiple([
+              Validatorless.min(6, 'minimo de 3 caracteres'),
+              Validatorless.required('nome e obrigatório.'),
+            ]),
           ),
           TextFormFieldWidget(
             hint: 'E-mail',
@@ -28,7 +32,10 @@ class FormRegiter extends GetView<AccountController> {
             keyboardType: TextInputType.emailAddress,
             controller: controller.controllerEmail,
             suffixIcon: const Icon(Icons.email_outlined),
-            validator: Validatorless.email('e-mail invalido'),
+            validator: Validatorless.multiple([
+              Validatorless.email('e-mail inválido'),
+              Validatorless.required('e-mail e obrigatório.')
+            ]),
           ),
           Obx(() {
             return TextFormFieldWidget(
@@ -41,7 +48,10 @@ class FormRegiter extends GetView<AccountController> {
                   icon: Icon(controller.isVisible.isTrue
                       ? Icons.remove_red_eye_outlined
                       : Icons.remove_red_eye)),
-              validator: Validatorless.min(6, 'minimo de 6 caracteres'),
+              validator: Validatorless.multiple([
+                Validatorless.min(6, 'minimo de 3 caracteres'),
+                Validatorless.required('nome e obrigatório.'),
+              ]),
             );
           }),
           Obx(() {

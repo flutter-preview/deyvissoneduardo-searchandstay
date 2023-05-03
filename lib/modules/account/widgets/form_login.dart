@@ -23,7 +23,10 @@ class FormLogin extends GetView<AccountController> {
             keyboardType: TextInputType.emailAddress,
             controller: controller.controllerEmail,
             suffixIcon: const Icon(Icons.email_outlined),
-            validator: Validatorless.email('e-mail invalido'),
+            validator: Validatorless.multiple([
+              Validatorless.email('e-mail inválido'),
+              Validatorless.required('e-mail e obrigatório.')
+            ]),
           ),
           Obx(() {
             return TextFormFieldWidget(
@@ -36,7 +39,10 @@ class FormLogin extends GetView<AccountController> {
                   icon: Icon(controller.isVisible.isTrue
                       ? Icons.remove_red_eye
                       : Icons.remove_red_eye_outlined)),
-              validator: Validatorless.min(6, 'minimo de 6 caracteres'),
+              validator: Validatorless.multiple([
+                Validatorless.min(6, 'minimo de 6 caracteres'),
+                Validatorless.required('senha e obrigatório.'),
+              ]),
             );
           }),
           Obx(() {
