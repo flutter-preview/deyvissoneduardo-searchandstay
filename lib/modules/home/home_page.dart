@@ -67,14 +67,14 @@ class HomePage extends GetView<HomeController> {
                         onCancel: () {
                           Get.back();
                         },
-                        onConfirm: () => controller.updateHouseRule(994),
+                        onConfirm: () => controller.updateHouseRule(controller.itemList[index].id),
                       );
                       break;
                     default:
                   }
                 },
                 child: Obx(() {
-                  return CardList(title: '${controller.itemList[index]}');
+                  return CardList(title: controller.itemList[index].name);
                 }),
               ),
             ),
