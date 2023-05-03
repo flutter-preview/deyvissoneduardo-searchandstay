@@ -20,15 +20,24 @@ class AccountController extends GetxController {
   AccountController({required UserService userService})
       : _userService = userService;
 
-  Future<User?> login() async {
+  Future<void> login() async {
     isLoading.value = true;
-    final user = await _userService.login(
-      controllerEmail.text.trim(),
-      controllerPassword.text.trim(),
-    );
-    clean();
+    try {
+      await _userService.login(
+        controllerEmail.text.trim(),
+        controllerPassword.text.trim(),
+      );
+      clean();
+    } on Exception catch (e) {
+      Get.defaultDialog(
+        title: 'E-mail enviado.',
+        content: const Text('Confirme o e-mail para ter acesso ao app'),
+        backgroundColor: kbackgroundColor,
+        confirmTextColor: kPrimaryColor,
+      );
+      clean();
+    }
     isLoading.value = false;
-    return user;
   }
 
   Future<User?> register() async {
@@ -50,7 +59,7 @@ class AccountController extends GetxController {
     return user;
   }
 
-  clean(){
+  clean() {
     controllerEmail.clear();
     controllerName.clear();
     controllerPassword.clear();

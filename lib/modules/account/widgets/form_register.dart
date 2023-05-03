@@ -68,7 +68,13 @@ class FormRegiter extends GetView<AccountController> {
                     ),
                   ),
                 ),
-                onPressed: () => controller.register(),
+                onPressed: () {
+                  final isForm =
+                      controller.formKeyRegister.currentState?.validate();
+                  if (isForm == true) {
+                    controller.register();
+                  }
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: controller.isLoading.isFalse

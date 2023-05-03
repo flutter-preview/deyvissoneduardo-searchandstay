@@ -59,7 +59,12 @@ class FormLogin extends GetView<AccountController> {
                     ),
                   ),
                 ),
-                onPressed: () => controller.login(),
+                onPressed: () {
+                  final isForm = controller.formKeyLogin.currentState?.validate();
+                  if(isForm == true){
+                    controller.login();
+                  }
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: controller.isLoading.isFalse
