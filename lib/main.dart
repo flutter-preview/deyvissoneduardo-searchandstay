@@ -6,13 +6,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:searchandstay/firebase_options.dart';
 import 'package:searchandstay/modules/core/di/core_bindings.dart';
+import 'package:searchandstay/modules/core/helpers/firebase_messaging.dart';
 import 'package:searchandstay/modules/splash/splash_page.dart';
 import 'package:searchandstay/routes/app_routes.dart';
 import 'package:searchandstay/theme/theme_default.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'modules/core/helpers/environments.dart';
-
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
 Future<void> main() async {
@@ -27,10 +27,16 @@ Future<void> main() async {
 
   Environments.loadEnvs();
 
+  SearchFirebaseMessaging.init();
+
   await dotenv.load(fileName: ".env");
 
   await Supabase.initialize(
       url: dotenv.env['url']!, anonKey: dotenv.env['anonKey']!);
+
+  debugPrint('***********************************************');
+  debugPrint(await FirebaseMessaging.instance.getToken());
+  debugPrint('***********************************************');
 
   runApp(
     DevicePreview(

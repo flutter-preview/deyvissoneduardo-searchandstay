@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 late AndroidNotificationChannel channel = const AndroidNotificationChannel(
@@ -13,7 +14,7 @@ late AndroidNotificationChannel channel = const AndroidNotificationChannel(
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-class VFirebaseMessaging {
+class SearchFirebaseMessaging {
   static late RemoteMessage? initialMessage;
 
   static notificationHandler() async {
@@ -44,7 +45,6 @@ class VFirebaseMessaging {
       provisional: false,
       sound: true,
     );
-
     await messaging.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
