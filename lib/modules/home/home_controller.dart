@@ -36,9 +36,11 @@ class HomeController extends GetxController
   }
 
   Future<void> getAll() async {
+    print('*****************************************');
     final response = await _homeService.getAll();
     debugPrint('${response.itens}');
     itemList.addAll(response.itens);
+    print('*****************************************');
   }
 
   Future<void> createHouseRule() async {

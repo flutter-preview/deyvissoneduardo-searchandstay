@@ -34,48 +34,45 @@ class HomePage extends GetView<HomeController> {
           child: ListView.builder(
             itemCount: controller.itemList.length,
             itemBuilder: (context, index) => Card(
-              child: Obx(() {
-                return CardList(
-                  title: controller.itemList[index].name,
-                  edit: () => Get.defaultDialog(
-                    title: 'Atualizar',
-                    content: TextFormFieldWidget(
-                      controller: controller.controllerName,
-                      label: '${controller.itemList[index]}',
-                    ),
-                    backgroundColor: kbackgroundColor,
-                    confirmTextColor: kPrimaryColor,
-                    buttonColor: Colors.white,
-                    cancelTextColor: Colors.red,
-                    textConfirm:
-                        controller.isLoading.isFalse ? 'Confirmar' : 'Salvando',
-                    textCancel: 'Cancelar',
-                    onCancel: () {
-                      Get.back();
-                    },
-                    onConfirm: () => controller
-                        .updateHouseRule(controller.itemList[index].id),
+              child: CardList(
+                title: controller.itemList[index].name,
+                edit: () => Get.defaultDialog(
+                  title: 'Atualizar',
+                  content: TextFormFieldWidget(
+                    controller: controller.controllerName,
+                    label: '${controller.itemList[index]}',
                   ),
-                  delete: () => Get.defaultDialog(
-                    title: 'Excluir',
-                    content: Text(
-                        'Confirma a exlusão do ${controller.itemList[index]}?'),
-                    backgroundColor: kbackgroundColor,
-                    confirmTextColor: kPrimaryColor,
-                    buttonColor: Colors.white,
-                    cancelTextColor: Colors.red,
-                    textConfirm: controller.isLoading.isFalse
-                        ? 'Confirmar'
-                        : 'Deletando',
-                    textCancel: 'Cancelar',
-                    onCancel: () {
-                      Get.back();
-                    },
-                    onConfirm: () => controller
-                        .deleteHouseRule(controller.itemList[index].id),
-                  ),
-                );
-              }),
+                  backgroundColor: kbackgroundColor,
+                  confirmTextColor: kPrimaryColor,
+                  buttonColor: Colors.white,
+                  cancelTextColor: Colors.red,
+                  textConfirm:
+                      controller.isLoading.isFalse ? 'Confirmar' : 'Salvando',
+                  textCancel: 'Cancelar',
+                  onCancel: () {
+                    Get.back();
+                  },
+                  onConfirm: () =>
+                      controller.updateHouseRule(controller.itemList[index].id),
+                ),
+                delete: () => Get.defaultDialog(
+                  title: 'Excluir',
+                  content: Text(
+                      'Confirma a exlusão do ${controller.itemList[index]}?'),
+                  backgroundColor: kbackgroundColor,
+                  confirmTextColor: kPrimaryColor,
+                  buttonColor: Colors.white,
+                  cancelTextColor: Colors.red,
+                  textConfirm:
+                      controller.isLoading.isFalse ? 'Confirmar' : 'Deletando',
+                  textCancel: 'Cancelar',
+                  onCancel: () {
+                    Get.back();
+                  },
+                  onConfirm: () =>
+                      controller.deleteHouseRule(controller.itemList[index].id),
+                ),
+              ),
             ),
           ),
         ),
