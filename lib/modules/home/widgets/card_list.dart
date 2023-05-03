@@ -6,7 +6,14 @@ import '../home_controller.dart';
 
 class CardList extends GetView<HomeController> {
   final String? title;
-  const CardList({Key? key, this.title}) : super(key: key);
+  final void Function()? edit;
+  final void Function()? delete;
+  const CardList({
+    Key? key,
+    this.title,
+    this.edit,
+    this.delete,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +22,26 @@ class CardList extends GetView<HomeController> {
       child: Material(
         child: ListTile(
           title: Text(title ?? ''),
-          subtitle: const Text(
-              'Clique para ver detalhes, ou arraste para os lados para atualizar ou excluir.'),
           tileColor: kbackgroundColor,
-          leading: const Icon(
-            Icons.edit,
-            color: kPrimaryColor,
+          leading: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: IconButton(
+              onPressed: edit,
+              icon: const Icon(
+                Icons.edit,
+                color: kPrimaryColor,
+              ),
+            ),
           ),
-          trailing: const Icon(
-            Icons.delete,
-            color: Colors.red,
+          trailing: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: IconButton(
+              onPressed: delete,
+              icon: const Icon(
+                Icons.delete,
+                color: Colors.red,
+              ),
+            ),
           ),
           onTap: () {
             Navigator.push(

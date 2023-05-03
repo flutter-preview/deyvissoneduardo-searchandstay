@@ -26,6 +26,7 @@ class AccountController extends GetxController {
       controllerEmail.text.trim(),
       controllerPassword.text.trim(),
     );
+    clean();
     isLoading.value = false;
     return user;
   }
@@ -43,9 +44,16 @@ class AccountController extends GetxController {
       backgroundColor: kbackgroundColor,
       confirmTextColor: kPrimaryColor,
     );
+    clean();
     Get.back();
     isLoading.value = false;
     return user;
+  }
+
+  clean(){
+    controllerEmail.clear();
+    controllerName.clear();
+    controllerPassword.clear();
   }
 
   @override

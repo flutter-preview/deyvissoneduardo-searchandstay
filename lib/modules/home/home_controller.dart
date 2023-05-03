@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:searchandstay/model/item.dart';
+import 'package:searchandstay/service/account/user_service.dart';
 import 'package:searchandstay/service/home/home_service.dart';
 
 class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
   final HomeService _homeService;
+  final UserService _userService;
 
   Rx<IconData> lastTapped = Icons.add.obs;
 
@@ -15,8 +17,10 @@ class HomeController extends GetxController
 
   TextEditingController controllerName = TextEditingController();
 
-  HomeController({required HomeService homeService})
-      : _homeService = homeService;
+  HomeController(
+      {required HomeService homeService, required UserService userService})
+      : _homeService = homeService,
+        _userService = userService;
 
   @override
   void onInit() {
@@ -40,7 +44,7 @@ class HomeController extends GetxController
     isLoading.value = true;
     await _homeService.createHouseRule(controllerName.text.trim());
     controllerName.clear();
-    getAll();
+    await getAll();
     Get.back();
     isLoading.value = false;
   }
@@ -48,18 +52,22 @@ class HomeController extends GetxController
   Future<void> deleteHouseRule(int id) async {
     isLoading.value = true;
     await _homeService.deleteItem(id);
-    getAll();
+    await getAll();
     Get.back();
     isLoading.value = false;
   }
 
-    Future<void> updateHouseRule(int id) async {
+  Future<void> updateHouseRule(int id) async {
     isLoading.value = true;
     await _homeService.updateItem(id, controllerName.text.trim());
     isLoading.value = false;
     controllerName.clear();
-    getAll();
+    await getAll();
     Get.back();
+  }
+
+  Future<void> signOut() async {
+    await _userService.signOut();
   }
 
   void updateMenu(IconData icon) {

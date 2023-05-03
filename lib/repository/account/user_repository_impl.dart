@@ -44,4 +44,9 @@ class UserRepositoryImpl implements UserRepository {
     }
     return null;
   }
+
+  @override
+  Future<void> signOut() async {
+    await supabase.auth.signOut();
+  }
 }
