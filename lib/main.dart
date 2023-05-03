@@ -1,7 +1,9 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:searchandstay/firebase_options.dart';
 import 'package:searchandstay/modules/core/di/core_bindings.dart';
 import 'package:searchandstay/modules/splash/splash_page.dart';
 import 'package:searchandstay/routes/app_routes.dart';
@@ -12,10 +14,15 @@ import 'modules/core/helpers/environments.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   Environments.loadEnvs();
-  
+
   await dotenv.load(fileName: ".env");
-  
+
   await Supabase.initialize(
       url: dotenv.env['url']!, anonKey: dotenv.env['anonKey']!);
 
@@ -24,6 +31,7 @@ Future<void> main() async {
       enabled: false,
       builder: (context) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        title: 'Search And Stay',
         theme: theme(),
         showPerformanceOverlay: false,
         initialBinding: CoreBindings(),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "533316360956",
+    "project_id": "searchandstay-1dc89",
+    "storage_bucket": "searchandstay-1dc89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533316360956:android:61815f17aba15c549fd579",
+        "android_client_info": {
+          "package_name": "com.example.searchandstay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533316360956-qig2gr8u99ob5clt1igcbgui6klt67sh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhdYy9pMgN0b-NfnkA1Hi1PMsvRQq_7qQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533316360956-qig2gr8u99ob5clt1igcbgui6klt67sh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
